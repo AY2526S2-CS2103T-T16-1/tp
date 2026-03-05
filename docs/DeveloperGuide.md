@@ -329,16 +329,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User enters a command to create a new potential victim profile (e.g., `add Ze Jian -email tzh@gmail.com -tag job : investment banker -tag yearly income : $100000`).
-2. System validates the input fields.
+1. User requests to create a new potential victim profile with name and other attributes.
+2. System validates the attributes.
 3. System saves the new profile and displays a success message with the created profile summary.
 
     Use case ends.
 
 **Extensions**
 
-* 1a. Required fields (e.g., name) are missing from the command.
-    * 1a1. System shows an error message indicating the missing required fields.
+* 1a. Victim name is unspecified.
+    * 1a1. System shows an error message indicating the missing attribute.
 
       Use case ends.
 
@@ -347,31 +347,20 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case ends.
 
-* 2b. A duplicate profile with the same name and phone number already exists.
-    * 2b1. System shows an error indicating the duplicate.
-
-      Use case ends.
-
 
 **Use case: UC02 - Delete potential victim profile**
 
 **MSS**
 
-1. User enters a command to delete a profile by index (e.g., `delete 3`).
-2. System locates the profile at the specified index.
-3. System deletes the profile and displays a success message with the deleted profile's name.
+1. User requests to delete a potential victim profile.
+2. System deletes the specified profile and displays a success message with the deleted profile's name.
 
     Use case ends.
 
 **Extensions**
 
-* 1a. No index is provided.
+* 1a. Request format is invalid or victim profile is unspecified
     * 1a1. System shows an error indicating the expected command format.
-
-      Use case ends.
-
-* 2a. The index is out of range or invalid (e.g., negative, non-integer).
-    * 2a1. System shows an error indicating the valid index range.
 
       Use case ends.
 
@@ -380,7 +369,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User enters a search command with a keyword (e.g., `find John --job banker`).
+1. User requests to search for victim profiles by name or other attributes.
 2. System searches stored profiles for matches.
 3. System displays a list of all matching profiles with their stored details.
  
@@ -388,7 +377,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. No search keyword is provided.
+* 1a. Request format is invalid
     * 1a1. System shows an error indicating the expected command format.
 
       Use case ends.
@@ -399,11 +388,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
 
 
-**Use case: UC04 - Filter and sort contacts by attributes**
+**Use case: UC04 - Sort contacts by attributes**
 
 **MSS**
 
-1. User enters a command with sort criteria (e.g., `list --sort age`).
+1. User requests to sort profiles by specified tag(s).
 2. System validates the specified tag(s).
 3. System displays the sorted list of profiles.
 
@@ -421,29 +410,26 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **MSS**
 
-1. User enters a command to append information to a profile by index (e.g., `append 3 --tag income : $100000`).
-2. System locates the profile at the specified index.
-3. System validates the new information.
-4. System updates the profile with the new information and displays a success message with the updated profile.
+1. User requests to append information to a specified profile.
+2. System validates the new information.
+3. System updates the profile with the new information and displays a success message with the updated profile.
 
     Use case ends.
 
 **Extensions**
 
-* 1a. No index or no new information is provided.
+* 1a. No new information is provided or profile is not well specified.
     * 1a1. System shows an error indicating the expected command format.
 
       Use case ends.
-* 2a. The index is out of range or invalid.
-    * 2a1. System shows an error indicating the valid index range.
+ 
+* 3a. The new information is invalid.
+    * 3a1. System shows an error indicating the expected format.
 
       Use case ends.
-* 3a. The new information format is invalid (e.g., missing tag name or value).
-    * 3a1. System shows an error indicating the expected command.
 
-      Use case ends.
 * 4a. The new information conflicts with existing information (e.g., trying to append a tag that already exists).
-    * 4a1. System shows an error indicating the conflict and suggests using the edit command instead.
+    * 4a1. System shows an error indicating the conflict.
 
       Use case ends.
 
@@ -454,6 +440,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be
    able to accomplish most of the tasks faster using commands than using the mouse.
 4. Should be fully functional without an internet connection.
+5. Should accept only ASCII characters in user input, and display all stored information in ASCII characters.
 
 ### Glossary
 

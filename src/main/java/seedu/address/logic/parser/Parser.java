@@ -9,8 +9,11 @@ import seedu.address.logic.parser.inputpatterns.InputPattern;
  */
 public abstract class Parser<T extends Command> {
 
+    /**
+     * Defines the InputPattern of the parser for the command of type T
+     * @return An InputPattern
+     */
     abstract InputPattern createInputPattern();
-
 
 
     /**

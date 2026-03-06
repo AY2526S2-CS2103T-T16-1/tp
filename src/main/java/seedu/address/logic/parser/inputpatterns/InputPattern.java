@@ -16,6 +16,10 @@ public class InputPattern extends ArrayList<Token> {
         this.label = _label;
     }
 
+    /**
+     * @param id the id of the token to find
+     * @return the token with corresponding id within the InputPattern
+     */
     public Token getTokenWithId(String id) {
         for (Token token : this) {
             if (token.getId().equals(id)) {
@@ -25,6 +29,17 @@ public class InputPattern extends ArrayList<Token> {
         return null;
     }
 
+    /**
+     * @param args the entire string after the first command word)
+     *
+     * This function will attempt to break args into segments and assign them
+     * to the corresponding tokens
+     *
+     * if successful, each token have their assignedSegment set
+     * if unsuccessful, it will throw a ParseException
+     *
+     * @throws ParseException
+     */
     public void assignSegmentsFromArgs(String args) throws ParseException {
         ArrayList<String> combinedSegments = getCombinedSegments(args);
 

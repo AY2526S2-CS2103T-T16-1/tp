@@ -3,10 +3,14 @@ package seedu.address.logic.parser.inputpatterns;
 /**
  * An abstract class for representing a single token
  * A command consists of several tokens following an InputPattern
+ * id - a String that identifies the token when its part of an InputPattern
+ * assignedSegment - a String, which is a substring of the input argument
+ * that has been assigned to this token
  */
 public abstract class Token {
 
-    private String id;
+
+    private final String id;
     private String assignedSegment;
 
     public Token(String id) {

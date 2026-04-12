@@ -147,7 +147,9 @@
       "src": "index.md",
       "title": "",
       "headings": {
-        "scambook": "ScamBook"
+        "scambook": "ScamBook",
+        "acknowledgements": "Acknowledgements",
+        "disclaimer": "Disclaimer"
       },
       "headingKeywords": {}
     },
